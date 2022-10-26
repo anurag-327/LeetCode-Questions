@@ -1,0 +1,29 @@
+class Solution {
+public:
+    
+    int findbalance(TreeNode *root)
+    {
+       if(root==NULL)
+           return 0;
+        
+        int lh=findbalance(root->left);
+        int rh=findbalance(root->right);
+        
+        if(abs(lh-rh)>1)
+            return -1;
+        if(lh==-1||rh==-1)
+            return -1;
+        
+        return 1+max(lh,rh);
+        
+    }
+    
+    bool isBalanced(TreeNode* root) 
+    {
+        int ans=findbalance(root);
+        if(ans==-1)
+            return false;
+        else
+            return true;
+    }
+};
