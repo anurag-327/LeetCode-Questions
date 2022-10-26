@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        // map<ListNode*,int> m;
+        if(head==NULL||head->next==NULL)
+        {
+            return false;
+        }
+        // int pos;
+        // cin>>pos;
+        ListNode *slowptr=head,*fastptr=head;
+        // int count=0;
+        while(fastptr!=NULL&&fastptr->next!=NULL)
+        {
+            fastptr=fastptr->next->next;
+            slowptr=slowptr->next;
+             if(slowptr==fastptr)
+            {
+                              return true;
+                
+            }
+        }
+        return false;
+    }
+};
