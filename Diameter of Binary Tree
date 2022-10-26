@@ -1,0 +1,43 @@
+class Solution {
+public:
+//     int height(TreeNode *root)
+//     {
+//         if(root==NULL)
+//             return 0;
+//         int lh=height(root->left);
+//         int rh=height(root->right);
+//         return(1+max(lh,rh));
+//     }
+//     int diameterOfBinaryTree(TreeNode* root) {
+//         if(root==NULL)
+//             return 0;
+//         int lh=height(root->left);
+//         int rh=height(root->right);
+        
+//         int ld=diameterOfBinaryTree(root->left);
+//         int rd=diameterOfBinaryTree(root->right);
+        
+//         return(max((lh+rh),(max(ld,rd))));
+        
+        
+        
+//     }
+    
+    int diameterOfBinaryTreee(TreeNode* root,int &maxi)
+    {
+        if(root==NULL)
+            return 0;
+        int lh=diameterOfBinaryTreee(root->left,maxi);
+        int rh=diameterOfBinaryTreee(root->right,maxi);
+        
+        maxi=max(maxi,lh+rh);
+        return 1+max(lh,rh);
+    }
+    
+    int diameterOfBinaryTree(TreeNode* root)
+    {
+        int maxi=0;
+        diameterOfBinaryTreee(root,maxi);
+        return maxi;
+    }
+};
