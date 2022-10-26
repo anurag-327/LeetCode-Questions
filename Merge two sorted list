@@ -1,0 +1,56 @@
+class Solution {
+public:
+    ListNode* createtail(ListNode* head,int val)
+    {
+        ListNode* p=new ListNode(val);
+        if(head==NULL)
+        {
+            head=p;
+        }
+        else
+        {
+            ListNode* t=head;
+            while(t->next!=NULL)
+            {
+                t=t->next;
+            }
+            t->next=p;
+        }
+        return  head;
+    }
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode* head=NULL;
+        if(list1==NULL)return list2;
+        if(list2==NULL)return list1;
+        while(list1!=NULL&&list2!=NULL)
+        {
+            if(list1->val<=list2->val)
+            {
+                head=createtail(head,list1->val);
+                list1=list1->next;
+            }
+            else
+            {
+                head=createtail(head,list2->val);
+                list2=list2->next; 
+            }
+            if(list1==NULL)
+            {
+                while(list2!=NULL)
+                {
+                    head=createtail(head,list2->val);
+                    list2=list2->next;
+                }
+            }
+            if(list2==NULL)
+            {
+                while(list1!=NULL)
+                {
+                    head=createtail(head,list1->val);
+                    list1=list1->next;
+                }
+            }
+        }
+        return head;
+    }
+};
