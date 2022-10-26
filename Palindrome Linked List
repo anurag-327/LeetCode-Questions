@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int sizeofll(ListNode* head)
+    {
+        ListNode* t=head;
+        int size=0;
+        while(t!=NULL)
+        {
+            size++;
+            t=t->next;
+        }
+        return size;
+    }
+    bool isPalindrome(ListNode* head)
+    {
+        if(head==NULL&&head->next==NULL)
+            return true;
+        stack<int> s;
+        ListNode *t=head;
+        int x=1;
+        int size=sizeofll(head);
+        while(x<=size/2)
+        {
+            s.push(t->val);
+            t=t->next;
+            x++;
+        }
+        if(size%2!=0)
+            t=t->next;
+        while(t!=NULL)
+        {
+            int pop=s.top();
+            if(pop!=t->val)
+                return false;
+            s.pop();
+            t=t->next;
+        }
+        return true;
+    }
+};
