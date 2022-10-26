@@ -1,0 +1,34 @@
+class Solution {
+public:
+    bool isPalindrome(string s)
+    {
+        vector<char> v;
+        for(long long i=0;i<s.length();i++)
+        {
+            if(isupper(s[i]))
+            {
+                char c=tolower(s[i]);
+                v.push_back(c);
+            }
+            else if(islower(s[i]))
+            {
+                v.push_back(s[i]);
+            }
+            else if(s[i]>=48&&s[i]<=57)
+            {
+                v.push_back(s[i]);
+            }
+        }
+        long long i=0,j=v.size()-1;
+        while(i<j)
+        {
+            if(v[i]!=v[j])
+            {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+};
