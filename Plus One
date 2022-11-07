@@ -1,0 +1,25 @@
+vector<int> plusOne(vector<int>& digits) {
+        int carry=1;
+        for(int j=digits.size()-1;j>=0;j--)
+        {
+            int temp=digits[j]+carry;
+            digits[j]=temp%10;
+            carry=temp/10;
+        }
+        if(carry==0)
+        {
+            return digits; 
+        }
+        else
+        {
+            vector<int> v;
+            v.push_back(carry);
+            int k=1;
+            for(int i=0;i<digits.size();i++)
+            {
+                v.push_back(digits[i]);
+            }
+            return v;
+        }
+       return digits;
+    }
